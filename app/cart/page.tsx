@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
+import Link from "next/link";
 
 export default function CartPage() {
   const {
@@ -72,9 +73,15 @@ export default function CartPage() {
         </button>
         <div className="text-right">
           <p className="text-2xl font-bold">Разом: ${totalPrice.toFixed(2)}</p>
-          <button className="mt-4 bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600">
-            Оформити замовлення
-          </button>
+
+          <div className="flex justify-end">
+            <Link
+              href="/checkout"
+              className="mt-4 bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600"
+            >
+              Оформити замовлення
+            </Link>
+          </div>
         </div>
       </div>
     </div>
