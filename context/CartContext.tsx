@@ -6,7 +6,7 @@ type Product = {
   id: number;
   name: string;
   price: number;
-  image: string;
+  imageUrl: string | null;
 };
 
 type CartItem = {

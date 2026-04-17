@@ -1,7 +1,7 @@
 export default function CardItem() {
   return (
     <div className="flex flex-col items-center gap-3 p-5 bg-white rounded shadow">
-      {/* <img
+      {/* <Image
         src="/assets/images/placeholder.png"
         alt="Product Image"
         className="w-full h-48 object-cover rounded"
