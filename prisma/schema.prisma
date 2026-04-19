@@ -6,6 +6,8 @@ datasource db {
   provider = "postgresql"
 }
 
+// ─── КОРИСТУВАЧІ ─────────────────────────────
+
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
@@ -13,6 +15,7 @@ model User {
   name      String?
   role      Role     @default(USER)
   orders    Order[]
+  reviews   Review[] // відгуки користувача
   createdAt DateTime @default(now())
 }
 
@@ -21,10 +24,32 @@ enum Role {
   ADMIN
 }
 
+// ─── ТОВАРИ ──────────────────────────────────
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  imageUrl    String?
+  isActive    Boolean  @default(true)
+  stock       Int      @default(0)
+  category    String? // категорія товару
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  orderItems OrderItem[]
+  reviews    Review[] // відгуки на товар
+}
+
+// ─── ЗАМОВЛЕННЯ ──────────────────────────────
+
 model Order {
-  id         Int         @id @default(autoincrement())
-  user       User        @relation(fields: [userId], references: [id])
-  userId     Int
+  id Int @id @default(autoincrement())
+
+  user   User? @relation(fields: [userId], references: [id])
+  userId Int?
+
   items      OrderItem[]
   totalPrice Float
   status     OrderStatus @default(PENDING)
@@ -35,6 +60,7 @@ model Order {
   address    String
   city       String
   createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @default(now()) @updatedAt
 }
 
 enum OrderStatus {
@@ -45,27 +71,39 @@ enum OrderStatus {
   CANCELLED // Скасовано
 }
 
+// Товари всередині замовлення
+// Зберігає ціну на момент покупки — навіть якщо ціна товару зміниться
 model OrderItem {
-  id      Int   @id @default(autoincrement())
-  order   Order @relation(fields: [orderId], references: [id])
-  orderId Int
-
+  id        Int     @id @default(autoincrement())
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   Int
   product   Product @relation(fields: [productId], references: [id])
   productId Int
-
-  quantity Int
-  price    Float // ціна на момент покупки
+  name      String
+  quantity  Int // кількість — можна змінювати
+  price     Float // ціна на момент покупки
 }
 
-model Product {
-  id          Int      @id @default(autoincrement())
-  name        String
-  description String?
-  price       Float
-  imageUrl    String?
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  stock       Int      @default(0)
+// ─── ВІДГУКИ ─────────────────────────────────
 
-  orderItems OrderItem[]
+model Review {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  rating    Int // оцінка від 1 до 5
+  comment   String? // текст відгуку
+  createdAt DateTime @default(now())
+}
+
+// ─── CMS (НАЛАШТУВАННЯ СТОРІНОК) ─────────────
+
+// Для адмін панелі → Pages Settings
+model Page {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique // наприклад "home", "about"
+  title     String
+  content   Json // зберігаємо блоки контенту
+  updatedAt DateTime @updatedAt
 }

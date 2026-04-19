@@ -14,12 +14,12 @@ export default function CartPage() {
   } = useCart();
 
   if (cart.length === 0) {
-    return <p className="text-center py-12">Кошик порожній</p>;
+    return <p className="text-center py-12">Cart is empty</p>;
   }
 
   return (
     <div className="max-w-4xl mx-auto px-8 py-12">
-      <h1 className="text-3xl font-bold mb-8">Кошик</h1>
+      <h1 className="text-3xl font-bold mb-8">Cart</h1>
 
       {cart.map((item) => (
         <div
@@ -58,7 +58,7 @@ export default function CartPage() {
             onClick={() => removeFromCart(item.product.id)}
             className="text-red-500 hover:text-red-700"
           >
-            Видалити
+            Delete
           </button>
         </div>
       ))}
@@ -69,17 +69,19 @@ export default function CartPage() {
           onClick={clearCart}
           className="text-gray-500 hover:text-gray-700"
         >
-          Очистити кошик
+          Clear cart
         </button>
         <div className="text-right">
-          <p className="text-2xl font-bold">Разом: ${totalPrice.toFixed(2)}</p>
+          <p className="text-2xl font-bold">
+            Together: ${totalPrice.toFixed(2)}
+          </p>
 
           <div className="flex justify-end">
             <Link
               href="/checkout"
               className="mt-4 bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600"
             >
-              Оформити замовлення
+              Checkout
             </Link>
           </div>
         </div>

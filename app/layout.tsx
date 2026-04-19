@@ -5,7 +5,7 @@ import Footer from "@/components/layout/Footer";
 import { CartProvider } from "@/context/CartContext";
 
 export const metadata: Metadata = {
-  title: "My App",
+  title: "Shop.com",
   description: "My App Description",
 };
 

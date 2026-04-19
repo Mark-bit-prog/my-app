@@ -31,12 +31,20 @@ export default async function ProductsPage() {
 
       <hr className="my-6" />
 
-      <Link
-        className="p-2 ml-auto bg-blue-500 text-white rounded-md justify-end"
-        href="/admin/products/create"
-      >
-        Add new product
-      </Link>
+      <div className="flex gap-5">
+        <Link
+          className="p-2 ml-auto bg-blue-500 text-white rounded-md"
+          href="/admin"
+        >
+          Cancel
+        </Link>
+        <Link
+          className="p-2 bg-blue-500 text-white rounded-md justify-end"
+          href="/admin/products/create"
+        >
+          Add new product
+        </Link>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
+import Link from "next/link";
+// import { ProductPage } from "@/app/shop/product/[id]/page";
 // import { prisma } from "@/lib/prisma";
 
 type product = {
@@ -23,19 +25,19 @@ const Card = ({ product }: { product: product }) => {
       className="bg-white rounded-lg shadow-md overflow-hidden"
     >
       {product.imageUrl ? (
-        <Image
-          src={product.imageUrl}
-          alt={product.name}
-          width={400}
-          height={400}
-          className="w-full h-64 object-cover"
-        />
+        <Link href={`/shop/product/${product.id}`}>
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            width={400}
+            height={400}
+          />
+        </Link>
       ) : (
         <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
           <span className="text-gray-500">No Image Available</span>
         </div>
       )}
-      {/*  */}
       <div className="p-6">
         <h2 className="text-xl font-bold">{product.name}</h2>
         <p className="text-gray-600 my-2">

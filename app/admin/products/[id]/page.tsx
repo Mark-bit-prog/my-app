@@ -9,6 +9,9 @@ interface Product {
   name: string;
   price: number | string;
   description: string;
+  imageUrl: string;
+  isActive: boolean;
+  stock: number | string;
 }
 
 export default function EditProduct() {
@@ -55,6 +58,9 @@ export default function EditProduct() {
 
     await fetch(`/api/products/${id}`, {
       method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(parsed.data),
     });
 
@@ -64,6 +70,7 @@ export default function EditProduct() {
   const handleDelete = async () => {
     await fetch(`/api/products/${id}`, {
       method: "DELETE",
+      headers: { "Content-Type": "application/json" },
     });
 
     router.push("/admin/products");
@@ -91,16 +98,34 @@ export default function EditProduct() {
           onChange={(e) => setForm({ ...form, price: e.target.value })}
         />
 
-        {/* <label className="mt-5 block font-medium text-gray-700 mb-1">
+        <label className="mt-5 block font-medium text-gray-700 mb-1">
           Description:
         </label>
         <textarea
           className="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={form.description}
           onChange={(e) => setForm({ ...form, description: e.target.value })}
-        /> */}
+        />
+
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            name="isActive"
+            id="isActive"
+            checked={form.isActive}
+            onChange={(e) => setForm({ ...form, isActive: e.target.checked })}
+          />
+          <span>Show product on website</span>
+        </label>
 
         <div className="flex gap-4 mt-4 justify-end">
+          <button
+            className="w-20 bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 font-medium"
+            type="button"
+            onClick={() => router.push("/admin/products")}
+          >
+            Cancel
+          </button>
           <button
             className="w-20 bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 font-medium"
             type="submit"

@@ -20,8 +20,12 @@ export const renewProductSchema = createProductSchema.partial();
 //   return NextResponse.json(product);
 // }
 
-export async function PATCH(req: Request, { params }: { params: unknown }) {
-  const parsedParams = idParamSchema.safeParse(params);
+export async function PATCH(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const resolvedParams = await params;
+  const parsedParams = idParamSchema.safeParse(resolvedParams);
 
   if (!parsedParams.success) {
     return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
@@ -58,8 +62,12 @@ export async function PATCH(req: Request, { params }: { params: unknown }) {
 //   return NextResponse.json({ success: true });
 // }
 
-export async function DELETE(req: Request, { params }: { params: unknown }) {
-  const parsedParams = idParamSchema.safeParse(params);
+export async function DELETE(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const resolvedParams = await params;
+  const parsedParams = idParamSchema.safeParse(resolvedParams);
 
   if (!parsedParams.success) {
     return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
@@ -71,5 +79,3 @@ export async function DELETE(req: Request, { params }: { params: unknown }) {
 
   return NextResponse.json({ success: true });
 }
-
-// New
