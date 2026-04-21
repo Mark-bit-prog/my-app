@@ -2,33 +2,40 @@ import Hero from "@/components/sections/Hero";
 // import Image from "next/image";
 import { LuArrowRight, LuArrowLeft } from "react-icons/lu";
 import { BsFillStarFill, BsCheckCircleFill } from "react-icons/bs";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
+    <div>
       <div className="bg-gray-100">
         <Hero />
       </div>
-      <div>
-        <div className="max-w-6xl py-12 px-8">
-          <p className="text-4xl font-black text-center uppercase">
+      <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto py-12 px-8">
+          <p className="text-4xl sm:text-5xl font-black text-center uppercase">
             New arrivals
           </p>
 
-          <button className="w-full h-[60] mt-5 bg-white border text-black p-2 rounded-full">
+          <Link
+            href={"/shop"}
+            className="flex items-center justify-center w-full lg:w-[210] lg:mx-auto h-[60] mt-5 bg-white border text-black p-2 rounded-full"
+          >
             View All
-          </button>
+          </Link>
         </div>
         <hr className="mx-10" />
-        <div className="max-w-6xl py-12 px-8">
-          <p className="text-4xl font-black text-center uppercase">
+        <div className="py-12 px-8">
+          <p className="text-4xl sm:text-5xl font-black text-center uppercase">
             Top selling
           </p>
-          <button className="w-full h-[60] mt-5 bg-white border text-black p-2 rounded-full">
+          <Link
+            href={"/shop"}
+            className="flex items-center justify-center w-full lg:w-[210] lg:mx-auto h-[60] mt-5 bg-white border text-black p-2 rounded-full"
+          >
             View All
-          </button>
+          </Link>
         </div>
-        <div className="flex-col max-w-6xl py-5 px-2 m-4 bg-[#F0F0F0] rounded-xl">
+        <div className="flex-col py-5 px-2 m-4 bg-[#F0F0F0] rounded-3xl">
           <p className="text-3xl sm:text-5xl mt-8 font-black text-center uppercase">
             BROWSE BY dress STYLE
           </p>
@@ -52,35 +59,73 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex max-w-6xl p-5">
+        <div className="flex p-5">
           <p className="text-2xl sm:text-5xl font-black text-left uppercase">
             OUR HAPPY CUSTOMERS
           </p>
 
-          <div className="flex gap-2 mt-auto">
+          <div className="flex gap-2 mt-auto ml-auto">
             <LuArrowLeft className="text-3xl" />
             <LuArrowRight className="text-3xl" />
           </div>
         </div>
-        <div className="flex-col max-w-6xl m-4 p-5 border rounded-xl">
-          <span className="flex gap-2">
-            <BsFillStarFill className="text-yellow-300" />
-            <BsFillStarFill className="text-yellow-300" />
-            <BsFillStarFill className="text-yellow-300" />
-            <BsFillStarFill className="text-yellow-300" />
-            <BsFillStarFill className="text-yellow-300" />
-          </span>
-          <div className="flex gap-2 my-4">
-            <p className="font-bold ">Sarah M.</p>
-            <BsCheckCircleFill className="text-xl text-[#01AB31] flex-wrap" />
+        <div className="lg:flex lg:gap-5">
+          <div className="flex-col sm:w-[400] sm:mx-auto m-4 p-5 border rounded-3xl">
+            <span className="flex gap-2">
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+            </span>
+            <div className="flex gap-2 my-4">
+              <p className="font-bold ">Sarah M.</p>
+              <BsCheckCircleFill className="text-xl text-[#01AB31] flex-wrap" />
+            </div>
+            <p className="text-zinc-500">
+              &quot;I&apos;m blown away by the quality and style of the clothes
+              I received from Shop.co. From casual wear to elegant dresses,
+              every piece I&apos;ve bought has exceeded my expectations.”
+            </p>
           </div>
-          <p className="text-zinc-500">
-            &quot;I&apos;m blown away by the quality and style of the clothes I
-            received from Shop.co. From casual wear to elegant dresses, every
-            piece I&apos;ve bought has exceeded my expectations.”
-          </p>
+          <div className="hidden lg:block flex-col sm:w-[400] sm:mx-auto m-4 p-5 border rounded-3xl">
+            <span className="flex gap-2">
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+            </span>
+            <div className="flex gap-2 my-4">
+              <p className="font-bold ">Sarah M.</p>
+              <BsCheckCircleFill className="text-xl text-[#01AB31] flex-wrap" />
+            </div>
+            <p className="text-zinc-500">
+              &quot;I&apos;m blown away by the quality and style of the clothes
+              I received from Shop.co. From casual wear to elegant dresses,
+              every piece I&apos;ve bought has exceeded my expectations.”
+            </p>
+          </div>
+          <div className="hidden lg:block flex-col sm:w-[400] sm:mx-auto m-4 p-5 border rounded-3xl">
+            <span className="flex gap-2">
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+              <BsFillStarFill className="text-yellow-300" />
+            </span>
+            <div className="flex gap-2 my-4">
+              <p className="font-bold ">Sarah M.</p>
+              <BsCheckCircleFill className="text-xl text-[#01AB31] flex-wrap" />
+            </div>
+            <p className="text-zinc-500">
+              &quot;I&apos;m blown away by the quality and style of the clothes
+              I received from Shop.co. From casual wear to elegant dresses,
+              every piece I&apos;ve bought has exceeded my expectations.”
+            </p>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

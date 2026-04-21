@@ -1,9 +1,8 @@
 export const navLinks = [
-  { href: "/", label: "Main" },
   { href: "/shop", label: "Shop" },
-  { href: "/cart", label: "Cart" },
-  { href: "/about", label: "About Us" },
-  { href: "/login", label: "Log In" },
+  { href: "/sale", label: "On Sale" },
+  { href: "/arrivals", label: "New Arrivals" },
+  { href: "/brands", label: "Brands" },
 ];
 
 export const footerLinks = [

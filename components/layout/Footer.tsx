@@ -17,29 +17,33 @@ const Footer = () => {
 
         {/* Overlay Block */}
         <div className="absolute inset-0 z-10 flex items-center justify-center text-white">
-          <div className="flex-col max-w-6xl m-4 p-6 bg-black rounded-xl">
-            <p className="text-white font-bold text-2xl sm:text-5xl">
-              STAY UP TO DATE ABOUT OUR LATEST OFFERS
-            </p>
+          <div className="lg:flex lg:w-full lg:mx-20 lg:py-10 m-4 p-6 bg-black rounded-3xl">
+            <div className="lg:my-auto lg:w-3/5 mx-5">
+              <p className="text-white font-bold text-2xl sm:text-6xl">
+                STAY UP TO DATE ABOUT OUR LATEST OFFERS
+              </p>
+            </div>
 
-            <label
-              htmlFor="email"
-              className="relative block p-3 mt-6 rounded-full text-gray-400 focus-within:text-gray-600 bg-white"
-            >
-              <TbMail className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4" />
+            <div className="lg:my-auto lg:w-[350] mx-5">
+              <label
+                htmlFor="email"
+                className="relative block p-3 mt-6 lg:mt-0 rounded-full text-gray-400 focus-within:text-gray-600 bg-white"
+              >
+                <TbMail className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-5" />
 
-              <input
-                type="email"
-                name="email"
-                id="email"
-                autoComplete="mail"
-                placeholder="Enter your email address"
-                className="form-input w-full pl-[30]"
-              />
-            </label>
-            <button className="relative block p-3 mt-5 w-full rounded-full focus-within:text-gray-600 bg-white text-black">
-              Subscribe to Newsletter
-            </button>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  autoComplete="mail"
+                  placeholder="Enter your email address"
+                  className="form-input w-full pl-[40] focus:outline-none"
+                />
+              </label>
+              <button className="relative block p-3 mt-5 w-full rounded-full focus-within:text-gray-600 bg-white text-black">
+                Subscribe to Newsletter
+              </button>
+            </div>
           </div>
         </div>
       </div>

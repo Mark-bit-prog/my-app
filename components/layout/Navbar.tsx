@@ -24,47 +24,52 @@ export default function Navbar() {
       </div>
 
       {/* Navigation */}
-      <nav className="flex items-center justify-between h-[64] p-2 sm:p-9 bg-white shadow">
+      <nav className="flex items-center  h-[64] p-2 md:px-20 sm:p-9  bg-white shadow ">
         {/* Burger Icon */}
-        <ul className="flex p-3 sm:hidden">
-          <li>
-            <Link href="#" className=" capitalize">
-              <LuAlignJustify className="text-2xl" />
-            </Link>
-          </li>
-        </ul>
+        <button className="capitalize flex p-3 md:hidden">
+          <LuAlignJustify className="text-2xl" />
+        </button>
 
-        <Link href="/" className="text-2xl font-[1000] capitalize mr-auto">
+        <Link href="/" className="text-2xl lg:text-4xl font-[1000] capitalize">
           SHOP.COM
         </Link>
-
-        <ul className="flex p-3 sm:hidden gap-[12]">
-          <li className="text-2xl font-[1000]">
-            <LuSearch />
-          </li>
-          <li className="text-2xl font-[1000]">
-            <LuShoppingCart />
-          </li>
-          <li className="text-2xl font-[1000]">
-            <LuCircleUserRound />
-          </li>
-        </ul>
-        <ul className="hidden gap-5 mx-auto sm:flex">
+        <ul className="hidden gap-5 md:ml-20 md:mr-auto md:flex font-light">
           {navLinks.map((link) => (
             <Link key={link.href} href={link.href}>
               {link.label}
             </Link>
           ))}
         </ul>
-        <Link href="/cart" className="hidden sm:flex items-center relative">
-          <div className=" w-5 h-6" />
-          {totalItems > 0 && (
-            <span className="absolute -top-2 -right-4 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-              {totalItems}
-            </span>
-          )}
-          <LuShoppingCart />
-        </Link>
+
+        {/* Search bar */}
+        <ul className="hidden md:mx-auto lg:flex font-light">
+          <label className="relative block p-3 rounded-full text-gray-400 focus-within:text-gray-600 bg-[#F0F0F0]">
+            <LuSearch className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4" />
+
+            <input
+              placeholder="Search for products..."
+              className="form-input w-96 pl-[40] bg-[#F0F0F0]  focus:outline-none"
+            />
+          </label>
+        </ul>
+
+        <div className="gap-5 p-3 ml-auto flex">
+          <Link href="/cart" className="lg:hidden">
+            <LuSearch className="text-2xl" />
+          </Link>
+          <Link href="/cart" className="flex items-center relative">
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-4 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+            <LuShoppingCart className="text-2xl" />
+          </Link>
+
+          <Link href="/login" className="items-center relative">
+            <LuCircleUserRound className="text-2xl" />
+          </Link>
+        </div>
       </nav>
     </div>
   );
