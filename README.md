@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Ecommerce Template
 
-## Getting Started
+Modern full-stack eCommerce template built with Next.js, TypeScript, Prisma, and Tailwind CSS.
 
-First, run the development server:
+Overview
 
-```bash
+This project is a modern eCommerce template focused on scalable architecture, reusable components, and clean UI development practices. The goal of the project was to create a solid foundation for building production-ready online stores using a modern React ecosystem.
+
+The project demonstrates practical frontend and backend development skills including:
+
+* Modern Next.js App Router architecture
+* TypeScript usage across the project
+* Component-based UI structure
+* Prisma ORM integration
+* Tailwind CSS styling workflow
+* Context-based state management
+* Organized folder structure
+* Scalable project architecture
+
+Tech Stack
+
+Frontend
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+
+Backend & Database
+
+* Prisma ORM
+
+Tooling
+
+* ESLint
+* PostCSS
+
+Project Structure
+
+<img width="486" height="187" alt="Screenshot 2026-05-11 at 20 03 00" src="https://github.com/user-attachments/assets/0860be50-ede6-4cc7-abb3-9d099a6830eb" />
+
+
+
+Key Highlights
+
+Scalable Architecture
+
+The project is structured using a clean and scalable architecture that separates UI, business logic, configuration, and utilities into dedicated folders.
+
+Reusable Components
+
+The application uses a reusable component approach, making the codebase easier to maintain and extend.
+
+Type Safety
+
+TypeScript is used throughout the project to improve maintainability, reduce runtime errors, and create a better developer experience.
+
+Modern Next.js Development
+
+The project is built using the modern Next.js App Router structure and follows current React development practices.
+
+Database Integration
+
+Prisma is integrated for database access and schema management.
+
+Getting Started
+
+1. Clone the repository
+
+git clone https://github.com/Mark-bit-prog/Ecommerce-Template.git
+
+2. Navigate to the project directory
+
+cd Ecommerce-Template
+
+3. Install dependencies
+
+npm install
+
+4. Run the development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Why This Project Matters
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project was built not only as a UI template, but also as a practical exercise in building scalable React applications with modern tooling.
 
-## Learn More
+It demonstrates:
 
-To learn more about Next.js, take a look at the following resources:
+* Real-world project organization
+* Frontend architecture skills
+* Clean TypeScript usage
+* Reusable component design
+* Modern styling workflows
+* Full-stack application structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Potential Improvements
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The architecture allows the project to be extended with additional production-level features such as:
 
-## Deploy on Vercel
+* Authentication
+* Stripe payments
+* Product filtering and search
+* Admin dashboard
+* API integrations
+* Server-side caching
+* Testing
+* CI/CD pipelines
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Screenshots
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add screenshots or GIF previews here to make the repository more attractive to recruiters.
+
+Example:
+
+![Home Page](./public/images/preview-home.png)
+
+Repository
+
+GitHub Repository￼
+
+Author
+
+Mark Budak
+
+⸻
+
+If you found this project interesting, feel free to star the repository or connect with me.
