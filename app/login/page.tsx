@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 type FormData = {
@@ -14,12 +14,34 @@ type FormData = {
 export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
+  const [isCheckingSession, setIsCheckingSession] = useState(true);
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormData>();
+
+  useEffect(() => {
+    const redirectAuthorizedUser = async () => {
+      const res = await fetch("/api/auth/session");
+      const session = await res.json();
+
+      if (session?.user?.role === "ADMIN") {
+        router.replace("/admin");
+        return;
+      }
+
+      if (session?.user) {
+        router.replace("/orders");
+        return;
+      }
+
+      setIsCheckingSession(false);
+    };
+
+    redirectAuthorizedUser();
+  }, [router]);
 
   const onSubmit = async (data: FormData) => {
     setError(null);
@@ -46,6 +68,16 @@ export default function LoginPage() {
       router.push("/orders");
     }
   };
+
+  if (isCheckingSession) {
+    return (
+      <div className="h-auto flex items-center justify-center">
+        <div className="bg-white md:shadow rounded-lg p-8 mt-20 w-full max-w-md">
+          <p className="text-center text-gray-500">Checking session...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-auto flex items-center justify-center">
@@ -115,7 +147,7 @@ export default function LoginPage() {
         </form>
 
         <Link className="text-gray-400 hover:text-black" href={"/register"}>
-          Doesn&apos;t have an accont? Register
+          Don&apos;t have an account? Register
         </Link>
       </div>
     </div>

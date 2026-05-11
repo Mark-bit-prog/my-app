@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 
 export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -13,24 +14,17 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
-        console.log("1. Credentials:", credentials); // чи приходять дані?
 
-        // Шукаємо користувача в БД
         const user = await prisma.user.findUnique({
-          where: { email: credentials.email },
+          where: { email: credentials.email.toLowerCase().trim() },
         });
-
-        console.log("2. User found:", user); // чи знайдено юзера?
 
         if (!user) return null;
 
-        // Перевіряємо пароль
         const isValid = await bcrypt.compare(
           credentials.password,
           user.password,
         );
-
-        console.log("3. Password valid:", isValid); // чи вірний пароль?
 
         if (!isValid) return null;
 
@@ -44,12 +38,10 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    // Зберігаємо role в token
     async jwt({ token, user }) {
       if (user) token.role = user.role;
       return token;
     },
-    // // Зберігаємо role в session
     async session({ session, token }) {
       if (session.user) {
         session.user.role = token.role;

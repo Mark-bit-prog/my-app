@@ -4,13 +4,13 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <div className="bg-[#F2F0F1] w-full">
-      <div className="lg:flex lg:pt-5 lg:px-20">
-        <div className="pt-12 px-5 lg:w-8/12 lg:mt-10">
+      <div className="mx-auto flex max-w-7xl flex-col overflow-hidden lg:flex-row lg:items-end lg:px-20 lg:pt-5">
+        <div className="px-5 pt-12 sm:px-8 lg:mt-10 lg:w-7/12 lg:px-0 lg:pb-12">
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black">
+            <h1 className="max-w-3xl text-4xl font-black leading-[1.05] sm:text-5xl lg:text-7xl">
               FIND CLOTHES THAT MATCHES YOUR STYLE
             </h1>
-            <p className="mt-[20] text-md text-zinc-500">
+            <p className="mt-5 max-w-xl text-sm leading-6 text-zinc-500 sm:text-base">
               Browse through our diverse range of meticulously crafted garments,
               designed to bring out your individuality and cater to your sense
               of style.
@@ -18,112 +18,87 @@ const Hero = () => {
 
             <Link
               href={"/shop"}
-              className="flex items-center justify-center w-full lg:w-[210] h-[55] mt-5 bg-black text-white p-2 rounded-full"
+              className="mt-6 flex h-[55px] w-full items-center justify-center rounded-full bg-black p-2 text-white sm:max-w-[210px]"
             >
               Shop Now
             </Link>
           </div>
-          <div className="my-5 lg:flex">
-            <div className="flex gap-10 my-10 max-w-[380] lg:max-w-full mx-auto lg:mx-1 justify-center">
-              <div>
+          <div className="my-8">
+            <div className="mx-auto grid max-w-[420px] grid-cols-2 justify-items-center gap-y-6 sm:max-w-xl sm:grid-cols-3 lg:mx-0 lg:max-w-2xl lg:justify-items-start">
+              <div className="w-full border-r border-zinc-400 pr-4 sm:border-r">
                 <p className="text-3xl lg:text-5xl font-medium">200+</p>
                 <p className="text-xs lg:text-base text-zinc-500">
                   International Brands
                 </p>
               </div>
-              {/* Line */}
-              <span className="w-[0.5] bg-zinc-400"></span>
-              <div>
+              <div className="w-full pl-4 sm:border-r sm:border-zinc-400 sm:px-6">
                 <p className="text-3xl lg:text-5xl font-medium">2,000+</p>
                 <p className="text-xs lg:text-base text-zinc-500">
                   High-Quality Products
                 </p>
               </div>
-              {/* Line only for big screens */}
-              <div className="w-[0.5] bg-zinc-400 hidden lg:flex"></div>
-
-              <div className="flex-col w-[103] mx-auto hidden lg:flex">
+              <div className="col-span-2 w-[150px] text-center sm:col-span-1 sm:w-full sm:pl-6 sm:text-left">
                 <p className="text-3xl lg:text-5xl font-medium">30,000+</p>
                 <p className="text-xs lg:text-base text-zinc-500">
                   Happy Customers
                 </p>
               </div>
             </div>
-            {/* Mobile screen */}
-            <div className="flex-col w-[103] mx-auto lg:hidden">
-              <p className="text-3xl font-medium">30,000+</p>
-              <p className="text-xs lg:font-extralight lg:text-base text-zinc-500">
-                Happy Customers
-              </p>
-            </div>
           </div>
         </div>
-        <Image
-          width={100}
-          height={100}
-          className="w-full h-full sm:mt-auto sm:w-2/4 lg:h-3/4 lg:w-2/4"
-          src="/images/hero-img.svg"
-          alt="photo"
-        />
+        <div className="mx-auto mt-2 flex w-full max-w-[390px] justify-center px-4 sm:max-w-[460px] lg:mt-0 lg:w-5/12 lg:max-w-none lg:px-0">
+          <Image
+            width={390}
+            height={448}
+            priority
+            className="h-auto w-full object-contain lg:max-h-[560px]"
+            src="/images/hero-img.svg"
+            alt="Models wearing casual clothes"
+          />
+        </div>
       </div>
       {/* Brands */}
-      <div className="h-[150] py-[30] md:flex md:justify-center bg-black">
-        <div className="items-center flex justify-center gap-10 lg:gap-36 px-3 md:p-0">
-          {/* Top row */}
+      <div className="bg-black px-5 py-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-12 lg:gap-x-28">
           <Image
             width={150}
             height={50}
-            className="w-[100]"
+            className="h-auto w-[100px] sm:w-[130px]"
+            style={{ height: "auto" }}
             src="/images/brand_1.png"
-            alt="photo"
+            alt="Versace"
           ></Image>
           <Image
             width={150}
             height={50}
-            className="w-[80]"
+            className="h-auto w-[80px] sm:w-[110px]"
+            style={{ height: "auto" }}
             src="/images/brand_2.png"
-            alt="photo"
+            alt="Zara"
           ></Image>
           <Image
             width={150}
             height={50}
-            className="w-[100]"
+            className="h-auto w-[100px] sm:w-[130px]"
+            style={{ height: "auto" }}
             src="/images/brand_3.png"
-            alt="photo"
+            alt="Gucci"
           ></Image>
-
-          {/* Mobile version */}
           <Image
             width={150}
             height={50}
-            className="hidden md:flex"
+            className="h-auto w-[120px] sm:w-[150px]"
+            style={{ height: "auto" }}
             src="/images/brand_4.png"
-            alt="photo"
-          ></Image>
-          <Image
-            width={150}
-            height={150}
-            className="hidden md:flex"
-            src="/images/brand_5.png"
-            alt="photo"
-          ></Image>
-        </div>
-
-        {/* Low row */}
-        <div className="md:hidden items-center flex justify-evenly mt-5 md:m-0 gap-3 px-3">
-          <Image
-            width={150}
-            height={50}
-            className=""
-            src="/images/brand_4.png"
-            alt="photo"
+            alt="Prada"
           ></Image>
           <Image
             width={150}
             height={50}
-            className=""
+            className="h-auto w-[140px] sm:w-[170px]"
+            style={{ height: "auto" }}
             src="/images/brand_5.png"
-            alt="photo"
+            alt="Calvin Klein"
           ></Image>
         </div>
       </div>

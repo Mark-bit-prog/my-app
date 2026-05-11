@@ -1,19 +1,54 @@
 "use client";
-import Link from "next/dist/client/link";
+import Link from "next/link";
+import { signOut } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { navLinks } from "@/config/links";
 import { useCart } from "@/context/CartContext";
-import { LuShoppingCart, LuSearch, LuCircleUserRound } from "react-icons/lu";
+import {
+  LuCircleUserRound,
+  LuLogOut,
+  LuSearch,
+  LuShoppingCart,
+} from "react-icons/lu";
 import BurgerMenu from "../ui/BurgerMenu";
 
 export default function Navbar() {
+  const router = useRouter();
   const { totalItems } = useCart();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const res = await fetch("/api/auth/session");
+      const session = await res.json();
+
+      setIsLoggedIn(Boolean(session?.user));
+    };
+
+    checkSession();
+  }, []);
+
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const query = searchQuery.trim();
+
+    if (!query) {
+      router.push("/shop");
+      return;
+    }
+
+    router.push(`/shop?query=${encodeURIComponent(query)}`);
+  };
 
   return (
     <div>
       <div className="bg-black h-[34] flex">
         <p className="text-white text-center text-xs sm:text-sm mx-auto my-auto">
           Sign up and get 20% off to your first order.
-          <Link className="ml-2 underline text-md" href={"/login"}>
+          <Link className="ml-2 underline text-md" href={"/register"}>
             Sign Up
           </Link>
         </p>
@@ -36,16 +71,28 @@ export default function Navbar() {
         </ul>
 
         {/* Search bar */}
-        <ul className="hidden md:mx-auto lg:flex font-light">
+        <form
+          onSubmit={handleSearch}
+          className="hidden md:mx-auto lg:flex font-light"
+        >
           <label className="relative block p-3 rounded-full text-gray-400 focus-within:text-gray-600 bg-[#F0F0F0]">
-            <LuSearch className="pointer-events-none w-5 h-5 absolute top-1/2 transform -translate-y-1/2 left-4" />
+            <button
+              type="submit"
+              className="absolute top-1/2 transform -translate-y-1/2 left-4"
+              aria-label="Search products"
+              title="Search products"
+            >
+              <LuSearch className="w-5 h-5" />
+            </button>
 
             <input
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
               placeholder="Search for products..."
-              className="form-input w-96 pl-[40] bg-[#F0F0F0]  focus:outline-none"
+              className="form-input w-96 pl-[40] bg-[#F0F0F0] focus:outline-none"
             />
           </label>
-        </ul>
+        </form>
 
         <div className="gap-5 p-2 ml-auto flex">
           <Link href="/cart" className="lg:hidden">
@@ -60,9 +107,25 @@ export default function Navbar() {
             <LuShoppingCart className="text-2xl" />
           </Link>
 
-          <Link href="/login" className="items-center relative">
+          <Link
+            href={isLoggedIn ? "/orders" : "/login"}
+            className="items-center relative"
+            title={isLoggedIn ? "My orders" : "Login"}
+          >
             <LuCircleUserRound className="text-2xl" />
           </Link>
+
+          {isLoggedIn && (
+            <button
+              type="button"
+              onClick={() => signOut({ callbackUrl: "/login" })}
+              className="items-center relative cursor-pointer"
+              title="Log out"
+              aria-label="Log out"
+            >
+              <LuLogOut className="text-2xl" />
+            </button>
+          )}
         </div>
       </nav>
     </div>
