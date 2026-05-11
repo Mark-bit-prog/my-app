@@ -111,11 +111,13 @@ The architecture allows the project to be extended with additional production-le
 
 Screenshots
 
-Add screenshots or GIF previews here to make the repository more attractive to recruiters.
+<img width="1440" height="776" alt="Screenshot 2026-05-11 at 17 00 14" src="https://github.com/user-attachments/assets/72e22592-3b4c-41c4-a39c-eaca54507b0d" />
 
-Example:
+<img width="1440" height="778" alt="Screenshot 2026-05-11 at 20 06 48" src="https://github.com/user-attachments/assets/b29557a2-5e72-4a28-b4b8-69b50cbc8264" />
 
-![Home Page](./public/images/preview-home.png)
+<img width="1440" height="776" alt="Screenshot 2026-05-11 at 20 06 22" src="https://github.com/user-attachments/assets/a07f1431-aa28-4e81-bb9e-6ac78636b81b" />
+
+
 
 Repository
 
