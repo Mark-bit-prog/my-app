@@ -20,10 +20,7 @@ const Card = ({ product }: { product: product }) => {
 
   const { addToCart } = useCart();
   return (
-    <div
-      key={product.id}
-      className="bg-white rounded-lg shadow-md overflow-hidden"
-    >
+    <div key={product.id} className="bg-white rounded-lg overflow-hidden">
       {product.imageUrl ? (
         <Link href={`/shop/product/${product.id}`}>
           <Image
@@ -50,7 +47,6 @@ const Card = ({ product }: { product: product }) => {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => {
             addToCart(product);
-            // console.log(`Added ${product.name} to cart`);
           }}
         >
           Add to Cart

@@ -48,9 +48,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="bg-white rounded-lg shadow p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center">Log In</h1>
+    <div className="h-auto flex items-center justify-center">
+      <div className="bg-white md:shadow rounded-lg p-8 mt-20 w-full max-w-md">
+        <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
 
         {error && (
           <p className="bg-red-100 text-red-500 p-3 rounded-lg mb-4 text-sm">
@@ -108,7 +108,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 font-medium disabled:opacity-50"
+            className="w-full lg:mx-auto h-[60] bg-black border text-white p-2 rounded-full"
           >
             {isSubmitting ? "Loading..." : "Sign In"}
           </button>

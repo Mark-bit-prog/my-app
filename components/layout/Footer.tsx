@@ -48,58 +48,62 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-[#F0F0F0] p-4">
-        <p className="text-3xl sm:text-5xl font-black">SHOP.COM</p>
-        <p className="font-sm font-extralight my-3 text-gray-500">
-          We have clothes that suits your style and which you’re proud to wear.
-          From women to men.
-        </p>
+        <div>
+          <p className="text-3xl sm:text-5xl font-black">SHOP.COM</p>
+          <p className="font-sm font-extralight my-3 text-gray-500">
+            We have clothes that suits your style and which you’re proud to
+            wear. From women to men.
+          </p>
+        </div>
 
-        <ul className="flex gap-3 my-5">
-          <li>
-            <Link href={"/"}>
-              <Image
-                width={30}
-                height={30}
-                className=""
-                src="/images/twitter_logo.png"
-                alt="logo"
-              ></Image>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/"}>
-              <Image
-                width={30}
-                height={30}
-                className=""
-                src="/images/facebook_logo.png"
-                alt="logo"
-              ></Image>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/"}>
-              <Image
-                width={30}
-                height={30}
-                className=""
-                src="/images/insta_logo.png"
-                alt="logo"
-              ></Image>
-            </Link>
-          </li>
-          <li>
-            <Link href={"/"}>
-              <Image
-                width={30}
-                height={30}
-                className=""
-                src="/images/git_logo.png"
-                alt="logo"
-              ></Image>
-            </Link>
-          </li>
-        </ul>
+        <div>
+          <ul className="flex gap-3 my-5">
+            <li>
+              <Link href={"/"}>
+                <Image
+                  width={30}
+                  height={30}
+                  className=""
+                  src="/images/twitter_logo.png"
+                  alt="logo"
+                ></Image>
+              </Link>
+            </li>
+            <li>
+              <Link href={"/"}>
+                <Image
+                  width={30}
+                  height={30}
+                  className=""
+                  src="/images/facebook_logo.png"
+                  alt="logo"
+                ></Image>
+              </Link>
+            </li>
+            <li>
+              <Link href={"/"}>
+                <Image
+                  width={30}
+                  height={30}
+                  className=""
+                  src="/images/insta_logo.png"
+                  alt="logo"
+                ></Image>
+              </Link>
+            </li>
+            <li>
+              <Link href={"/"}>
+                <Image
+                  width={30}
+                  height={30}
+                  className=""
+                  src="/images/git_logo.png"
+                  alt="logo"
+                ></Image>
+              </Link>
+            </li>
+          </ul>
+        </div>
 
         <ul className="hidden gap-5 mx-auto sm:flex">
           {footerLinks.map((link) => (

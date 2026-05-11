@@ -2,12 +2,8 @@
 import Link from "next/dist/client/link";
 import { navLinks } from "@/config/links";
 import { useCart } from "@/context/CartContext";
-import {
-  LuShoppingCart,
-  LuSearch,
-  LuCircleUserRound,
-  LuAlignJustify,
-} from "react-icons/lu";
+import { LuShoppingCart, LuSearch, LuCircleUserRound } from "react-icons/lu";
+import BurgerMenu from "../ui/BurgerMenu";
 
 export default function Navbar() {
   const { totalItems } = useCart();
@@ -26,9 +22,7 @@ export default function Navbar() {
       {/* Navigation */}
       <nav className="flex items-center  h-[64] p-2 md:px-20 sm:p-9  bg-white shadow ">
         {/* Burger Icon */}
-        <button className="capitalize flex p-3 md:hidden">
-          <LuAlignJustify className="text-2xl" />
-        </button>
+        <BurgerMenu />
 
         <Link href="/" className="text-2xl lg:text-4xl font-[1000] capitalize">
           SHOP.COM
@@ -53,7 +47,7 @@ export default function Navbar() {
           </label>
         </ul>
 
-        <div className="gap-5 p-3 ml-auto flex">
+        <div className="gap-5 p-2 ml-auto flex">
           <Link href="/cart" className="lg:hidden">
             <LuSearch className="text-2xl" />
           </Link>
